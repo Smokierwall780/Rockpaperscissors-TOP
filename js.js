@@ -3,8 +3,6 @@
 // create two variables that track both the players score and the computers score 
 //
 
-let humanScore = 0;
-let computerScore = 0;
 
 
 function getComputerChoice() {
@@ -23,19 +21,29 @@ function getHumanChoice()  {
     return humanChoice;
 } 
 
-function playRound(human, computer) {
-    human = human.toLowerCase();
-    if (human === computer) {
-        console.log("You Tied!");
-    } else if (
-        human == "rock" && computer == "scissor" ||
-        human == "scissor" && computer == "paper" ||
-        human == "paper" && computer == "rock"
-    ) {
-        console.log("Human Won!");
-    } else {
-        console.log("Computer Won!");
-    }
+
+
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+        function playRound(human, computer) {
+            human = human.toLowerCase();
+            if (human === computer) {
+                console.log(`You tied! You both chose ${human}`);
+            } else if (
+                human == "rock" && computer == "scissor" ||
+                human == "scissor" && computer == "paper" ||
+                human == "paper" && computer == "rock"
+            ) {
+                console.log(`You won! ${human} beats ${computer}`);
+                humanScore++;
+            } else {
+                console.log(`You lose! ${human} loses to ${computer}`);
+                computerScore++;
+            }
+        }
+    } 
 }
 
 const humanChoice = getHumanChoice();
